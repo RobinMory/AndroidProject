@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Project">
         <activity
-            android:name=".MainActivity"
+            android:name=".ProjectActivity"
+            android:label="MPM"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
