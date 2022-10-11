@@ -3,4 +3,7 @@
     <string name="Save_Button">Confirmer</string>
     <string name="hint_project_name">Nom du projet</string>
     <string name="description_project">Description du projet</string>
+    <string name="submit">submit</string>
+    <string name="title_activity_project_list">ProjectListActivity</string>
+    <string name="etape_label">Etapes</string>
 </resources>
