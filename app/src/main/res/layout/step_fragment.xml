@@ -11,6 +11,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/step_title"
             android:hint="Insérer nom de l'étape"/>
+
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="match_parent"
