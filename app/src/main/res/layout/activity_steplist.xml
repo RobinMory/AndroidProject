@@ -8,12 +8,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:id="@+id/project_title"
         android:hint="@string/hint_project_name"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:id="@+id/project_description"
         android:hint="@string/description_project"/>
 
@@ -26,7 +28,7 @@
             android:text="@string/etape_label" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton1"
+            android:id="@+id/floatingActionButtonStepList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -34,9 +36,33 @@
             app:srcCompat="@android:drawable/ic_menu_add" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_label"
+            android:textSize="25dp"></TextView>
+
+
+        <TextView
+            android:id="@+id/total_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-5dp"
+            android:text="Moyenne totale"></TextView>
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/step_list_container"
             android:layout_width="match_parent"
@@ -44,9 +70,4 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/save_project"
-        android:text="@string/Save_Button" />
 </LinearLayout>

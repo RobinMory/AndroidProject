@@ -1,27 +1,36 @@
 package be.helha.ue3103.android_project.models;
 
+import java.util.UUID;
+
 public class Step {
-    private String name;
-    private float points;
+
+    protected java.util.UUID mId;
+    private String mName;
+    private int mPoints;
 
     public Step() {
-        this.name = "Etape test";
-        this.points = 5;
+        mId = UUID.randomUUID();
+        this.mName = "Etape test";
+        this.mPoints = 5;
+    }
+
+    public UUID getId() {
+        return mId;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
-    public void setPoints(float points) {
-        this.points = points;
+    public void setPoints(int points) {
+        this.mPoints = points;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
-    public float getPoints() {
-        return points;
+    public int getPoints() {
+        return mPoints;
     }
 }

@@ -15,7 +15,6 @@ import be.helha.ue3103.android_project.R;
 
 public class StepListActivity extends AppCompatActivity {
 
-    private Button mSaveButton;
     private FloatingActionButton mAddStepButton;
     private EditText mProjectName;
     private EditText mProjectDesc;
@@ -26,10 +25,7 @@ public class StepListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steplist);
 
-
-
-        mSaveButton = findViewById(R.id.save_project);
-        mAddStepButton = findViewById(R.id.floatingActionButton1);
+        mAddStepButton = findViewById(R.id.floatingActionButtonStepList);
         mProjectName = findViewById(R.id.project_title);
         mProjectDesc = findViewById(R.id.project_description);
         setButtonListener();
@@ -38,7 +34,6 @@ public class StepListActivity extends AppCompatActivity {
     private void setButtonListener() {
         mAddStepButton.setOnClickListener(event -> {
             //Ouvrir un fragment en envoyant une étape en paramètre
-            Toast.makeText(this, "Fragment Open from StepList", Toast.LENGTH_SHORT).show();
             FragmentManager fm = getSupportFragmentManager();
             Fragment fragment = fm.findFragmentById(R.id.step_list_container);
             //if (fragment == null) {

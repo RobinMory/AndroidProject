@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Project">
         <activity
+            android:name=".controlers.ProjectActivity"
+            android:exported="true" />
+        <activity
             android:name=".controlers.StepListActivity"
             android:exported="true"
             android:label="MPM">
