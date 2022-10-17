@@ -1,26 +1,34 @@
 package be.helha.ue3103.android_project.models;
 
 import java.util.List;
+import java.util.UUID;
 
 import be.helha.ue3103.android_project.models.Project;
 
 public class Student {
-    private String name;
-    private List<Project> projectList;
+
+    protected java.util.UUID mId;
+
+    public UUID getmId() {
+        return mId;
+    }
+
+    private String mName;
+    private List<Project> mProjectList;
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
+        this.mProjectList = projectList;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public List<Project> getProjectList() {
-        return projectList;
+        return mProjectList;
     }
 }

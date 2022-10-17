@@ -1,51 +1,59 @@
 package be.helha.ue3103.android_project.models;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Project {
-    private Student student;
-    private String name;
-    private String description;
-    private float total;
-    private List<Step> stepList;
+
+    protected java.util.UUID mId;
+
+    public UUID getmId() {
+        return mId;
+    }
+
+    private Student mStudent;
+    private String mName;
+    private String mDescription;
+    private int mTotal;
+    private List<Step> mStepList;
 
     public void setStudent(Student student) {
-        this.student = student;
+        this.mStudent = student;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.mDescription = description;
     }
 
     public void setStepList(List<Step> stepList) {
-        this.stepList = stepList;
+        this.mStepList = stepList;
     }
 
     public Student getStudent() {
-        return student;
+        return mStudent;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public String getDescription() {
-        return description;
+        return mDescription;
     }
 
     public List<Step> getStepList() {
-        return stepList;
+        return mStepList;
     }
 
-    public float getTotal() {
-        return total;
+    public int getTotal() {
+        return mTotal;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
+    public void setTotal(int total) {
+        this.mTotal = total;
     }
 }
