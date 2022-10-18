@@ -12,6 +12,23 @@
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:text="Nom de l'étudiant"></TextView>
+
+    <RelativeLayout android:id="@+id/RelativeLayoutProject" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/text_view_id"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="32dp"
+            android:text="@string/project_label" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButtonStepList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,13 +38,4 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
     </ScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonProject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
 </LinearLayout>
