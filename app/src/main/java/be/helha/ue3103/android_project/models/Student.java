@@ -8,27 +8,28 @@ import be.helha.ue3103.android_project.models.Project;
 public class Student {
 
     protected java.util.UUID mId;
+    private String mName;
+    //private List<Project> mProjectList;   //normalement inutile car DB prends le relai
 
-    public UUID getmId() {
-        return mId;
+    public Student() {
+        this(UUID.randomUUID());
     }
 
-    private String mName;
-    private List<Project> mProjectList;
+    public Student(UUID id){
+        mId = id;
+    }
+
+    public UUID getId() { return mId; }
 
     public void setName(String name) {
         this.mName = name;
     }
 
-    public void setProjectList(List<Project> projectList) {
-        this.mProjectList = projectList;
-    }
+   // public void setProjectList(List<Project> projectList) {this.mProjectList = projectList;}
 
     public String getName() {
         return mName;
     }
 
-    public List<Project> getProjectList() {
-        return mProjectList;
-    }
+    //public List<Project> getProjectList() {return mProjectList;}
 }

@@ -10,6 +10,11 @@ public class StudentBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "studentBase.db";
     public StudentBaseHelper(Context context) {super(context, DATABASE_NAME, null, VERSION);
     }
+
+    public String getDatabaseName() {
+        return DATABASE_NAME;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+ StudentTable.NAME + "("
@@ -20,6 +25,7 @@ public class StudentBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
+        System.out.println("StudentDB Upgrade");
     }
 
 }

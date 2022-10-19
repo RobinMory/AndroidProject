@@ -6,16 +6,23 @@ import java.util.UUID;
 public class Project {
 
     protected java.util.UUID mId;
+    private Student mStudent;
+    private String mName;
+    private String mDescription;
+    private int mAverage;
+    //private List<Step> mStepList;
+
+    public Project() {
+        this(UUID.randomUUID());
+    }
+
+    public Project(UUID id){
+        mId = id;
+    }
 
     public UUID getmId() {
         return mId;
     }
-
-    private Student mStudent;
-    private String mName;
-    private String mDescription;
-    private int mTotal;
-    private List<Step> mStepList;
 
     public void setStudent(Student student) {
         this.mStudent = student;
@@ -29,9 +36,7 @@ public class Project {
         this.mDescription = description;
     }
 
-    public void setStepList(List<Step> stepList) {
-        this.mStepList = stepList;
-    }
+    // public void setStepList(List<Step> stepList) {this.mStepList = stepList;}
 
     public Student getStudent() {
         return mStudent;
@@ -45,15 +50,13 @@ public class Project {
         return mDescription;
     }
 
-    public List<Step> getStepList() {
-        return mStepList;
+    //public List<Step> getStepList() {return mStepList;}
+
+    public int getAverage() {
+        return mAverage;
     }
 
-    public int getTotal() {
-        return mTotal;
-    }
-
-    public void setTotal(int total) {
-        this.mTotal = total;
+    public void setAverage(int average) {
+        this.mAverage = average;
     }
 }

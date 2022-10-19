@@ -21,6 +21,7 @@ public class StepBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
+        System.out.println("StepDB Upgrade");
     }
 
 }

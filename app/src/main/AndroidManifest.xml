@@ -13,7 +13,13 @@
             android:name=".controlers.ProjectActivity"
             android:exported="true" />
         <activity
+            android:name=".controlers.AddStudentActivity"
+            android:exported="true" />
+        <activity
             android:name=".controlers.StepListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controlers.StudentListActivity"
             android:exported="true"
             android:label="MPM">
             <intent-filter>

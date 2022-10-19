@@ -9,9 +9,11 @@ public class Step {
     private int mPoints;
 
     public Step() {
-        mId = UUID.randomUUID();
-        this.mName = "Etape test";
-        this.mPoints = 5;
+        this(UUID.randomUUID());
+    }
+
+    public Step(UUID id){
+        mId = id;
     }
 
     public UUID getId() {

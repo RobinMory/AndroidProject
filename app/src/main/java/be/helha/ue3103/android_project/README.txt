@@ -1,5 +1,6 @@
 
 
-1. Comment utiliser le cursorWrapper
-2. Vérifier si la DB est bien construite
-3. Vérifier les modeles afin de bien gérer l'app
+1. Pourquoi l'insert ne marche pas ?
+2. Comment incruster la liste ?
+3. Comment choper l'id ?
+4. Vérifier le code mis en place (curseur , lab ,...)
