@@ -14,7 +14,6 @@ import be.helha.ue3103.android_project.R;
 public class StudentListActivity extends AppCompatActivity {
 
     private FloatingActionButton mAddStudentButton;
-    private static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +21,7 @@ public class StudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_list);
         mAddStudentButton = findViewById(R.id.floatingActionButtonStudentList);
         setButtonListener();
+        updateUI();
     }
 
     private void setButtonListener() {

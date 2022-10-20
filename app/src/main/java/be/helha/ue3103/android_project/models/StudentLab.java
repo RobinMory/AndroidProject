@@ -27,7 +27,6 @@ public class StudentLab {
     private StudentLab(Context context) {
         mContext = context.getApplicationContext();
         mDatabase = new MPMDataBaseHelper(mContext).getWritableDatabase();
-        ;
     }
 
     public void addStudent(Student student) {

@@ -35,8 +35,8 @@ public class AddStudentActivity extends AppCompatActivity {
                 Student s = new Student();
                 s.setName(c);
                 lab.addStudent(s);
-                System.out.println(s.getId());
-                System.out.println(s.getName());
+                //System.out.println(s.getId());
+                //System.out.println(s.getName());
             }
         });
     }
