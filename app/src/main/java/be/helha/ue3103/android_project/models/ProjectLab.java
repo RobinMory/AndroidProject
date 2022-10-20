@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.List;
 import java.util.UUID;
 
-import be.helha.ue3103.android_project.db.ProjectBaseHelper;
-import be.helha.ue3103.android_project.db.StepBaseHelper;
 import be.helha.ue3103.android_project.db.StudentCursorWrapper;
 
 public class ProjectLab {
+
+    //Peut-être inutile
 
     private static ProjectLab sProjectLab;
     private Context mContext;
@@ -25,8 +25,7 @@ public class ProjectLab {
     }
 
     private ProjectLab(Context context) {
-        mContext = context.getApplicationContext();
-        mDatabase = new ProjectBaseHelper(mContext).getWritableDatabase();
+
     }
 
     public void addStudent(Student student) {

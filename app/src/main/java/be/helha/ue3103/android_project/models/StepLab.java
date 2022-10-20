@@ -7,11 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.List;
 import java.util.UUID;
 
-import be.helha.ue3103.android_project.db.StepBaseHelper;
-import be.helha.ue3103.android_project.db.StudentBaseHelper;
+import be.helha.ue3103.android_project.db.MPMDataBaseHelper;
 import be.helha.ue3103.android_project.db.StudentCursorWrapper;
 
 public class StepLab {
+
+    //Peut-être inutile
 
     private static StepLab sStepLab;
     private Context mContext;
@@ -26,7 +27,7 @@ public class StepLab {
 
     private StepLab(Context context) {
         mContext = context.getApplicationContext();
-        mDatabase = new StepBaseHelper(mContext).getWritableDatabase();
+        mDatabase = new MPMDataBaseHelper(mContext).getWritableDatabase();
     }
 
     public void addStudent(Student student) {

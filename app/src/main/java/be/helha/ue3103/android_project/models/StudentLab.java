@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import be.helha.ue3103.android_project.db.ProjectBaseHelper;
-import be.helha.ue3103.android_project.db.StepBaseHelper;
-import be.helha.ue3103.android_project.db.StudentBaseHelper;
+import be.helha.ue3103.android_project.db.MPMDataBaseHelper;
 import be.helha.ue3103.android_project.db.StudentCursorWrapper;
-import be.helha.ue3103.android_project.db.StudentDbSchema;
+import be.helha.ue3103.android_project.db.MPMDbSchema;
 
 public class StudentLab {
     private static StudentLab sStudentLab;
@@ -28,13 +26,12 @@ public class StudentLab {
 
     private StudentLab(Context context) {
         mContext = context.getApplicationContext();
-        mDatabase = new StudentBaseHelper(mContext).getWritableDatabase();
-        mDatabase = new ProjectBaseHelper(mContext).getWritableDatabase();
-        mDatabase = new StepBaseHelper(mContext).getWritableDatabase();
+        mDatabase = new MPMDataBaseHelper(mContext).getWritableDatabase();
+        ;
     }
 
     public void addStudent(Student student) {
-            mDatabase.insert(StudentDbSchema.StudentTable.NAME, null,
+            mDatabase.insert(MPMDbSchema.StudentTable.NAME, null,
                     getContentValues(student));
     }
 
@@ -42,7 +39,7 @@ public class StudentLab {
 
     public Student getStudent(UUID id) {
         StudentCursorWrapper cursor =
-                queryCrimes(StudentDbSchema.StudentTable.cols.UUID + " = ? ",
+                queryCrimes(MPMDbSchema.StudentTable.cols.UUID + " = ? ",
                         new String[]{id.toString()}
                 );
         try {
@@ -72,14 +69,14 @@ public class StudentLab {
 
     private ContentValues getContentValues(Student student) {
         ContentValues values = new ContentValues();
-        values.put(StudentDbSchema.StudentTable.cols.UUID, student.getId().toString());
-        values.put(StudentDbSchema.StudentTable.cols.NAME, student.getName());
+        values.put(MPMDbSchema.StudentTable.cols.UUID, student.getId().toString());
+        values.put(MPMDbSchema.StudentTable.cols.NAME, student.getName());
         return values;
     }
 
     private StudentCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
         return new StudentCursorWrapper(mDatabase.query(
-                StudentDbSchema.StudentTable.NAME,
+                MPMDbSchema.StudentTable.NAME,
                 null, //all columns
                 whereClause,
                 whereArgs,
