@@ -10,7 +10,7 @@ import be.helha.ue3103.android_project.db.MPMDbSchema.StudentTable;
 
 public class MPMDataBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
-    private static final String DATABASE_NAME = "stepBase.db";
+    private static final String DATABASE_NAME = "MPMDataBase.db";
     public MPMDataBaseHelper(Context context) {super(context, DATABASE_NAME, null, VERSION);
     }
     @Override
@@ -35,6 +35,6 @@ public class MPMDataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
-        System.out.println("StepDB Upgrade");
+        System.out.println("MPMDb Upgrade");
     }
 }

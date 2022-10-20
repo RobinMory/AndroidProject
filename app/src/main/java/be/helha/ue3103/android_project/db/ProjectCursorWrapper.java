@@ -16,13 +16,13 @@ public class ProjectCursorWrapper extends CursorWrapper {
 
     public Project getProject()
     {
-        String uuidString = getString(getColumnIndex(ProjectDbSchema.ProjectTable.cols.UUID));
+        String uuidString = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.UUID));
 
-        String name = getString(getColumnIndex(ProjectDbSchema.ProjectTable.cols.NAME));
+        String name = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.NAME));
 
-        String description = getString(getColumnIndex(ProjectDbSchema.ProjectTable.cols.DESCRIPTION));
+        String description = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.DESCRIPTION));
 
-        int average = getInt(getColumnIndex(ProjectDbSchema.ProjectTable.cols.AVERAGE));
+        int average = getInt(getColumnIndex(MPMDbSchema.ProjectTable.cols.AVERAGE));
 
         Project project = new Project(UUID.fromString(uuidString));
         project.setName(name);
