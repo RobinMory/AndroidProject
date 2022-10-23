@@ -18,13 +18,16 @@ public class StepCursorWrapper extends CursorWrapper {
     {
         String uuidString = getString(getColumnIndex(MPMDbSchema.StepTable.cols.UUID));
 
+        String uuidProject_id = getString(getColumnIndex(MPMDbSchema.StepTable.cols.PROJECT_ID));
+
         String name = getString(getColumnIndex(MPMDbSchema.StepTable.cols.NAME));
 
         int grade = getInt(getColumnIndex(MPMDbSchema.StepTable.cols.GRADE));
 
         Step step = new Step(UUID.fromString(uuidString));
+        step.setProject_ID(UUID.fromString(uuidProject_id));
         step.setName(name);
-        step.setPoints(grade);
+        step.setGrade(grade);
         return step;
     }
 }

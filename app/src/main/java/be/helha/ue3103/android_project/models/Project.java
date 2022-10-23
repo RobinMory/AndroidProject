@@ -6,6 +6,7 @@ import java.util.UUID;
 public class Project {
 
     protected java.util.UUID mId;
+    protected java.util.UUID mStudentId;
     private Student mStudent;
     private String mName;
     private String mDescription;
@@ -20,9 +21,15 @@ public class Project {
         mId = id;
     }
 
-    public UUID getmId() {
+    public UUID getId() {
         return mId;
     }
+
+    public UUID getStudentId() {
+        return mStudentId;
+    }
+
+    public void setStudentId(UUID student_id){this.mStudentId = student_id;};
 
     public void setStudent(Student student) {
         this.mStudent = student;

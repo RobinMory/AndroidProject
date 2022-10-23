@@ -10,87 +10,74 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import be.helha.ue3103.android_project.R;
+import be.helha.ue3103.android_project.models.ProjectLab;
 import be.helha.ue3103.android_project.models.Step;
+import be.helha.ue3103.android_project.models.StepLab;
 
 
 public class StepFragment extends Fragment {
 
+    public static final String PROJECT_ID = "PROJECT_ID";
     protected Step mStep;
+    private StepLab stepLab;
     private EditText mStepTitle;
     private Spinner mSpinnerPoints;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mStep = new Step();
-        /* Lors de l'utilisation de la DB, l'étape sera reconnu via son UUID dans la table
-        UUID crime_id = (UUID)
-                getActivity().getIntent().getSerializableExtra(CRIME_ID);
-        mCrime = CrimeLab.get(getContext()).getCrime(crime_id);
-         */
+        Bundle bundle = this.getArguments();
+        mStep = (Step) bundle.getSerializable(PROJECT_ID);
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.step_fragment,container,false);
         mStepTitle = (EditText) v.findViewById(R.id.step_title);
         mSpinnerPoints = (Spinner) v.findViewById(R.id.points_spinner);
         mStepTitle.setText(mStep.getName());
-        //Il faut setLaValue des points dans le spinner
-        setSpinner();
+        mSpinnerPoints.setSelection(mStep.getGrade());
+        setSpinnerValue();
         setListener();
-
         return v;
     }
 
     private void setListener() {
         mStepTitle.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-                // do nothing
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count,int after) {}
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mStep.setName(s.toString());
+                //UPDATE
             }
+
             @Override
-            public void afterTextChanged(Editable s) {
-                // do nothing, everything’s done in onTextChanged
-            }
+            public void afterTextChanged(Editable s) {}
         });
         mSpinnerPoints.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                /*Toast toast = Toast.makeText(getActivity(), mSpinnerPoints.getSelectedItem().getClass().toString()
-                        , Toast.LENGTH_SHORT);
-                toast.show();
-                 */
-                //Parse de string à int
-            }
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {}
 
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
+            public void onNothingSelected(AdapterView<?> parentView) {}
         });
     }
 
-    private void setSpinner() {
+    private void setSpinnerValue() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.points_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerPoints.setAdapter(adapter);
-        Integer point = mStep.getPoints();
+        Integer point = mStep.getGrade();
         int selectionPosition= adapter.getPosition(point.toString());
         mSpinnerPoints.setSelection(selectionPosition);
     }

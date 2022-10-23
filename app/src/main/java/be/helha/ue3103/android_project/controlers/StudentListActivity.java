@@ -64,7 +64,7 @@ public class StudentListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ProjectActivity.class);
-                intent.putExtra(ProjectActivity.STUDENT_EXTRA, student.getName());
+                intent.putExtra(ProjectActivity.STUDENT_EXTRA, student.getId());
                 startActivity(intent);
             }
         });

@@ -22,7 +22,7 @@
             android:text="@string/project_label" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButtonStepList"
+            android:id="@+id/floatingActionButtonProjectList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

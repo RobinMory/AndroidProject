@@ -24,10 +24,13 @@ public class ProjectCursorWrapper extends CursorWrapper {
 
         int average = getInt(getColumnIndex(MPMDbSchema.ProjectTable.cols.AVERAGE));
 
+        String uuid_Student = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.STUDENT_ID));
+
         Project project = new Project(UUID.fromString(uuidString));
         project.setName(name);
         project.setDescription(description);
         project.setAverage(average);
+        project.setStudentId(UUID.fromString(uuid_Student));
         return project;
     }
 }

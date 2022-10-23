@@ -38,7 +38,7 @@ public class StudentLab {
 
     public Student getStudent(UUID id) {
         StudentCursorWrapper cursor =
-                queryCrimes(MPMDbSchema.StudentTable.cols.UUID + " = ? ",
+                queryStudents(MPMDbSchema.StudentTable.cols.UUID + " = ? ",
                         new String[]{id.toString()}
                 );
         try {
@@ -53,7 +53,7 @@ public class StudentLab {
 
     public List<Student> getStudents() {
         ArrayList<Student> students = new ArrayList<>();
-        StudentCursorWrapper cursor = queryCrimes(null, null);
+        StudentCursorWrapper cursor = queryStudents(null, null);
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
@@ -73,7 +73,7 @@ public class StudentLab {
         return values;
     }
 
-    private StudentCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
+    private StudentCursorWrapper queryStudents(String whereClause, String[] whereArgs) {
         return new StudentCursorWrapper(mDatabase.query(
                 MPMDbSchema.StudentTable.NAME,
                 null, //all columns
