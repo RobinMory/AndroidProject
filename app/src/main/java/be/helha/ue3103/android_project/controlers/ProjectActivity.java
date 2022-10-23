@@ -13,17 +13,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.UUID;
 
 import be.helha.ue3103.android_project.R;
+import be.helha.ue3103.android_project.models.MPMLab;
 import be.helha.ue3103.android_project.models.Project;
-import be.helha.ue3103.android_project.models.ProjectLab;
 import be.helha.ue3103.android_project.models.Student;
-import be.helha.ue3103.android_project.models.StudentLab;
 
 public class ProjectActivity extends AppCompatActivity {
 
     public static final String STUDENT_EXTRA = "STUDENT_EXTRA";
 
-    private StudentLab studentLab;
-    private ProjectLab projectLab;
+    private MPMLab lab;
     private Student student;
     private UUID mStudentId;
 
@@ -40,7 +38,7 @@ public class ProjectActivity extends AppCompatActivity {
         mStudentName = findViewById(R.id.textView_project_student_name);
         mAddProject = findViewById(R.id.floatingActionButtonProjectList);
         mContainer = (LinearLayout) findViewById(R.id.project_list_container);
-        projectLab = ProjectLab.get(this.getApplicationContext());
+        lab =  MPMLab.get(this.getApplicationContext());
         setProjectWindow();
         setButtonListener();
         updateUI();
@@ -48,7 +46,7 @@ public class ProjectActivity extends AppCompatActivity {
 
     private void updateUI() {
         mContainer.removeAllViews();
-        for (final Project project : projectLab.getProjects(mStudentId)) {
+        for (final Project project : lab.getProjects(mStudentId)) {
             View projectView = getProjectView(project);
             mContainer.addView(projectView);
         }
@@ -75,8 +73,8 @@ public class ProjectActivity extends AppCompatActivity {
 
     private void setProjectWindow() {
         mStudentId = (UUID) this.getIntent().getSerializableExtra(STUDENT_EXTRA);
-        studentLab = StudentLab.get(this.getApplicationContext());
-        student = studentLab.getStudent(mStudentId);
+        lab =  MPMLab.get(this.getApplicationContext());
+        student = lab.getStudent(mStudentId);
         mStudentName.setText(student.getName());
     }
 
@@ -86,7 +84,7 @@ public class ProjectActivity extends AppCompatActivity {
             new_project.setStudentId(mStudentId);
             new_project.setName("Nouveau Projet");
             new_project.setAverage(0);
-            projectLab.addProject(new_project);
+            lab.addProject(new_project);
             View new_project_view = getNewProjectView(new_project);
             mContainer.addView(new_project_view);
         });

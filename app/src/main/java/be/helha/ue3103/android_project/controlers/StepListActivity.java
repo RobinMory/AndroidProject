@@ -4,26 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import be.helha.ue3103.android_project.R;
+import be.helha.ue3103.android_project.models.MPMLab;
 import be.helha.ue3103.android_project.models.Project;
-import be.helha.ue3103.android_project.models.ProjectLab;
 import be.helha.ue3103.android_project.models.Step;
-import be.helha.ue3103.android_project.models.StepLab;
-import be.helha.ue3103.android_project.models.StudentLab;
 
 public class StepListActivity extends AppCompatActivity {
 
@@ -36,8 +28,7 @@ public class StepListActivity extends AppCompatActivity {
 
     protected UUID mProjectId;
 
-    private ProjectLab projectLab;
-    private StepLab stepLab;
+    private MPMLab lab;
     private Project mProject;
 
 
@@ -57,12 +48,11 @@ public class StepListActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        projectLab = ProjectLab.get(this.getApplicationContext());
-        mProject = projectLab.getProject(mProjectId);
+        lab =  MPMLab.get(this.getApplicationContext());
+        mProject = lab.getProject(mProjectId);
         mProjectName.setText(mProject.getName());
         mProjectDesc.setText(mProject.getDescription());
-        stepLab = StepLab.get(this.getApplicationContext());
-        for (final Step step : stepLab.getSteps(mProjectId)) {
+        for (final Step step : lab.getSteps(mProjectId)) {
             FragmentManager fm = getSupportFragmentManager();
             Fragment fragment = fm.findFragmentById(R.id.step_list_container);
             fragment = new StepFragment();
@@ -83,8 +73,8 @@ public class StepListActivity extends AppCompatActivity {
             step.setName("Nouvelle étape");
             step.setGrade(3);
             step.setProject_ID(mProjectId);
-            stepLab = StepLab.get(this.getApplicationContext());
-            stepLab.addStep(step);
+            lab =  MPMLab.get(this.getApplicationContext());
+            lab.addStep(step);
             bundle.putSerializable(StepFragment.PROJECT_ID,step);
             fragment.setArguments(bundle);
             fm.beginTransaction().add(R.id.step_list_container, fragment).commit();

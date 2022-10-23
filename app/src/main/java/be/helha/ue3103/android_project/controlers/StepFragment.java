@@ -14,20 +14,16 @@ import android.widget.Spinner;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.io.Serializable;
-import java.util.UUID;
-
 import be.helha.ue3103.android_project.R;
-import be.helha.ue3103.android_project.models.ProjectLab;
+import be.helha.ue3103.android_project.models.MPMLab;
 import be.helha.ue3103.android_project.models.Step;
-import be.helha.ue3103.android_project.models.StepLab;
 
 
 public class StepFragment extends Fragment {
 
     public static final String PROJECT_ID = "PROJECT_ID";
     protected Step mStep;
-    private StepLab stepLab;
+    private MPMLab lab;
     private EditText mStepTitle;
     private Spinner mSpinnerPoints;
 

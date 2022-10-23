@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import be.helha.ue3103.android_project.R;
+import be.helha.ue3103.android_project.models.MPMLab;
 import be.helha.ue3103.android_project.models.Student;
-import be.helha.ue3103.android_project.models.StudentLab;
 
 public class StudentListActivity extends AppCompatActivity {
 
     private FloatingActionButton mAddStudentButton;
-    private StudentLab lab;
+    private MPMLab lab;
     private LinearLayout mContainer;
 
     @Override
@@ -26,7 +26,7 @@ public class StudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_list);
         mAddStudentButton = findViewById(R.id.floatingActionButtonStudentList);
         mContainer = (LinearLayout) findViewById(R.id.student_list_container);
-        lab  = StudentLab.get(this.getApplicationContext());
+        lab  = MPMLab.get(this.getApplicationContext());
         setButtonListener();
         updateUI();
     }
