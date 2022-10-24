@@ -26,7 +26,7 @@ public class StepListActivity extends AppCompatActivity implements StepFragment.
     private FloatingActionButton mAddStepButton;
     private EditText mProjectName;
     private EditText mProjectDesc;
-    private TextView mProjectAverage;
+    private TextView mProjectTotal;
 
     protected UUID mProjectId;
 
@@ -43,16 +43,17 @@ public class StepListActivity extends AppCompatActivity implements StepFragment.
 
         mProjectName = findViewById(R.id.project_title);
         mProjectDesc = findViewById(R.id.project_description);
-        mProjectAverage = findViewById(R.id.project_average);
+        mProjectTotal = findViewById(R.id.total_textview);
 
         mProjectId = (UUID) this.getIntent().getSerializableExtra(PROJECT_EXTRA);
+        lab =  MPMLab.get(this.getApplicationContext());
+        mProject = lab.getProject(mProjectId);
         setButtonListener();
         updateUI();
+        updateTotal();
     }
 
     private void updateUI() {
-        lab =  MPMLab.get(this.getApplicationContext());
-        mProject = lab.getProject(mProjectId);
         mProjectName.setText(mProject.getName());
         mProjectDesc.setText(mProject.getDescription());
         for (final Step step : lab.getSteps(mProjectId)) {
@@ -74,7 +75,7 @@ public class StepListActivity extends AppCompatActivity implements StepFragment.
             Bundle bundle = new Bundle();
             Step step = new Step();
             step.setName("Nouvelle étape");
-            step.setGrade(3);
+            step.setGrade(0);
             step.setProject_ID(mProjectId);
             lab =  MPMLab.get(this.getApplicationContext());
             lab.addStep(step);
@@ -121,7 +122,25 @@ public class StepListActivity extends AppCompatActivity implements StepFragment.
     }
 
     @Override
-    public void OnItemSelected(int grade) {
+    public void OnItemSelected() {
         //Il faut recalculer le total des points
+        updateTotal();
+    }
+
+    private void updateTotal() {
+        double total = 0;
+        double average_project = 0;
+        for (final Step step : lab.getSteps(mProjectId)) {
+            average_project = average_project + step.getGrade();
+            total = total + 10;
+        }
+        if (total > 0) {
+            mProjectTotal.setText(average_project + "/" + (int)total);
+            System.out.println("Voici le calcul : " + average_project + "/" + total + "* 20");
+            double averageOn20 = (average_project / total)*20;
+            double roundedOneDigitX = Math.round(averageOn20 * 10) / 10.0;
+            mProject.setAverage(roundedOneDigitX);
+            lab.updateProject(mProject);
+        }
     }
 }

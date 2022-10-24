@@ -10,7 +10,7 @@ public class Project {
     private Student mStudent;
     private String mName;
     private String mDescription;
-    private int mAverage;
+    private double mAverage;
     //private List<Step> mStepList;
 
     public Project() {
@@ -59,11 +59,11 @@ public class Project {
 
     //public List<Step> getStepList() {return mStepList;}
 
-    public int getAverage() {
+    public double getAverage() {
         return mAverage;
     }
 
-    public void setAverage(int average) {
+    public void setAverage(double average) {
         this.mAverage = average;
     }
 }

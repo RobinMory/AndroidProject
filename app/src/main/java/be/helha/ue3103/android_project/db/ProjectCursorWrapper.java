@@ -22,7 +22,7 @@ public class ProjectCursorWrapper extends CursorWrapper {
 
         String description = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.DESCRIPTION));
 
-        int average = getInt(getColumnIndex(MPMDbSchema.ProjectTable.cols.AVERAGE));
+        double average = getDouble(getColumnIndex(MPMDbSchema.ProjectTable.cols.AVERAGE));
 
         String uuid_Student = getString(getColumnIndex(MPMDbSchema.ProjectTable.cols.STUDENT_ID));
 

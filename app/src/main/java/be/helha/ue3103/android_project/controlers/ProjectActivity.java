@@ -55,7 +55,7 @@ public class ProjectActivity extends AppCompatActivity {
     private View getProjectView(Project project) {
         View project_list_item = getLayoutInflater().inflate(R.layout.list_item_project, null);
         ((TextView) project_list_item.findViewById(R.id.project_name)).setText(project.getName());
-        ((TextView) project_list_item.findViewById(R.id.project_average)).setText(Integer.toString(project.getAverage()) + "/20");
+        ((TextView) project_list_item.findViewById(R.id.project_average)).setText(Double.toString(project.getAverage()) + "/20");
         setClickOnProjectView(project ,project_list_item);
         return project_list_item;
     }

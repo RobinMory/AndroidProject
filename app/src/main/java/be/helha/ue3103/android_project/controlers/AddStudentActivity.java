@@ -1,5 +1,6 @@
 package be.helha.ue3103.android_project.controlers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,8 +34,9 @@ public class AddStudentActivity extends AppCompatActivity {
                 Student s = new Student();
                 s.setName(c);
                 lab.addStudent(s);
-                //System.out.println(s.getId());
-                //System.out.println(s.getName());
+                mStudentListET.setText("");
+                Intent intent = new Intent(getApplicationContext(), StudentListActivity.class);
+                startActivity(intent);
             }
         });
     }

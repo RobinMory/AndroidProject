@@ -69,7 +69,7 @@ public class StepFragment extends Fragment {
                 lab.updateStep(mStep);
 
                 if(fragmentInterfacer != null){
-                    fragmentInterfacer.OnItemSelected(position);
+                    fragmentInterfacer.OnItemSelected();
                 }
             }
 
@@ -89,7 +89,7 @@ public class StepFragment extends Fragment {
     }
 
     public interface MyFragmentInterfacer{
-        void OnItemSelected(int grade);
+        void OnItemSelected();
     }
     MyFragmentInterfacer fragmentInterfacer;
 
