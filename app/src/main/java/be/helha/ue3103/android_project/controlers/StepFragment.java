@@ -1,5 +1,6 @@
 package be.helha.ue3103.android_project.controlers;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +33,7 @@ public class StepFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
         mStep = (Step) bundle.getSerializable(PROJECT_ID);
+        lab =  MPMLab.get(this.getContext());
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,8 +54,8 @@ public class StepFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mStep.setName(s.toString());
-                //UPDATE
+                mStep.setName(mStepTitle.getText().toString());
+                lab.updateStep(mStep);
             }
 
             @Override
@@ -61,7 +63,15 @@ public class StepFragment extends Fragment {
         });
         mSpinnerPoints.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {}
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                mStep.setGrade(position);
+                lab.updateStep(mStep);
+
+                if(fragmentInterfacer != null){
+                    fragmentInterfacer.OnItemSelected(position);
+                }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {}
@@ -76,5 +86,17 @@ public class StepFragment extends Fragment {
         Integer point = mStep.getGrade();
         int selectionPosition= adapter.getPosition(point.toString());
         mSpinnerPoints.setSelection(selectionPosition);
+    }
+
+    public interface MyFragmentInterfacer{
+        void OnItemSelected(int grade);
+    }
+    MyFragmentInterfacer fragmentInterfacer;
+
+    //Override this function as below to set fragmentInterfacer
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        fragmentInterfacer = (MyFragmentInterfacer) context;
     }
 }

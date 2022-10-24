@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,7 +19,7 @@ import be.helha.ue3103.android_project.models.MPMLab;
 import be.helha.ue3103.android_project.models.Project;
 import be.helha.ue3103.android_project.models.Step;
 
-public class StepListActivity extends AppCompatActivity {
+public class StepListActivity extends AppCompatActivity implements StepFragment.MyFragmentInterfacer {
 
     public static final String PROJECT_EXTRA = "PROJECT_EXTRA";
 
@@ -38,6 +40,7 @@ public class StepListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_steplist);
 
         mAddStepButton = findViewById(R.id.floatingActionButtonStepList);
+
         mProjectName = findViewById(R.id.project_title);
         mProjectDesc = findViewById(R.id.project_description);
         mProjectAverage = findViewById(R.id.project_average);
@@ -79,5 +82,46 @@ public class StepListActivity extends AppCompatActivity {
             fragment.setArguments(bundle);
             fm.beginTransaction().add(R.id.step_list_container, fragment).commit();
         });
+        mProjectName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //NOTHING
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //UPDATE
+                mProject.setName(mProjectName.getText().toString());
+                lab.updateProject(mProject);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //NOTHING
+            }
+        });
+        mProjectDesc.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //NOTHING
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //UPDATE
+                mProject.setDescription(mProjectDesc.getText().toString());
+                lab.updateProject(mProject);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //NOTHING
+            }
+        });
+    }
+
+    @Override
+    public void OnItemSelected(int grade) {
+        //Il faut recalculer le total des points
     }
 }

@@ -97,4 +97,10 @@ public class ProjectActivity extends AppCompatActivity {
         setClickOnProjectView(project ,project_list_item);
         return project_list_item;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUI();
+    }
 }
