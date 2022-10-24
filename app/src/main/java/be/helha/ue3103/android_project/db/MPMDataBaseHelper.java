@@ -35,6 +35,6 @@ public class MPMDataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
-        System.out.println("MPMDb Upgrade");
+        // Ma DB n'a pas été upgrade donc cette méthode ne devrait pas s'activer
     }
 }
